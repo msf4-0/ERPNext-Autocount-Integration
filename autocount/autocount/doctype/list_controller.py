@@ -17,21 +17,14 @@ from autocount.autocount.doctype import url_config
 class ListController:
 	def __init__(self, doctype, url_get_all, url_detail = None):
 		self.doctype = doctype
-		# self.url_get_all = url_get_all
-		# self.url_detail = url_detail
-
-		# self.url_get_all = f"{autocount_settings.get_ip_address()}/{url_get_all}"
-		# self.url_detail = url_detail
-		# if url_detail is not None:
-		# 	self.url_detail = f"{autocount_settings.get_ip_address()}/{url_detail}"
 
 		# URL = "http://host.docker.internal:8888"
-		URL = url_config.get_ip_address()
+		SOCKET_ADDRESS = url_config.get_socket_address()
 
-		self.url_get_all = f"{URL}/{url_get_all}"
+		self.url_get_all = f"{SOCKET_ADDRESS}/{url_get_all}"
 		self.url_detail = url_detail
 		if url_detail is not None:
-			self.url_detail = f"{URL}/{url_detail}"
+			self.url_detail = f"{SOCKET_ADDRESS}/{url_detail}"
 
 		self.has_child_table = self.has_child_table()
 

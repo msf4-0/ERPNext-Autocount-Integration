@@ -9,16 +9,18 @@ import requests
 import time
 
 # from autocount.autocount.doctype.autocount_settings import autocount_settings
+from autocount.autocount.doctype import url_config
 
 class FormController:
-	#BASE_URL = autocount_settings.get_ip_address()
-	BASE_URL = "http://host.docker.internal:8888"
+	# BASE_URL = autocount_settings.get_ip_address()
+	# BASE_URL = "http://host.docker.internal:8888"
+	SOCKET_ADDRESS = url_config.get_socket_address()
 
 	def __init__(self, doctype_url_name):
 		self.doctype_url_name = doctype_url_name
-		self.url_add = f"{self.BASE_URL}/{self.doctype_url_name}/add"
-		self.url_edit = f"{self.BASE_URL}/{self.doctype_url_name}/edit"
-		self.url_delete = f"{self.BASE_URL}/{self.doctype_url_name}/delete"
+		self.url_add = f"{self.SOCKET_ADDRESS}/{self.doctype_url_name}/add"
+		self.url_edit = f"{self.SOCKET_ADDRESS}/{self.doctype_url_name}/edit"
+		self.url_delete = f"{self.SOCKET_ADDRESS}/{self.doctype_url_name}/delete"
 
 	def add_to_autocount(self, data):
 		start_time = time.time()

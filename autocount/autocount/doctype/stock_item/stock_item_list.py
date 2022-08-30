@@ -12,16 +12,6 @@ import time
 from autocount.autocount.doctype.list_controller import ListController
 # from autocount.autocount.doctype.autocount_settings import autocount_settings
 
-
-#-----------------------------------------------------#
-from autocount.autocount.doctype import url_config
-@frappe.whitelist()
-def test():
-	return url_config.get_ip_address()
-#-----------------------------------------------------#
-
-
-
 DOCTYPE = "Stock Item"
 DOCTYPE_URL_NAME = "StockItem"
 ERP_PRIMARY_KEY = "item_code"

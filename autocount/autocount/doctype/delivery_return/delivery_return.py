@@ -13,6 +13,7 @@ from autocount.autocount.doctype.form_controller import FormController
 from autocount.autocount.doctype.utils import convert_date_string
 
 # from autocount.autocount.doctype.autocount_settings import autocount_settings
+from autocount.autocount.doctype import url_config
 
 DOCTYPE = "Delivery Return"
 DOCTYPE_URL_NAME = "DeliveryReturn"
@@ -27,10 +28,12 @@ class DeliveryReturn(Document):
 @frappe.whitelist()
 def get_items_by_debtor_autocount(debtor_code):
 	# BASE_URL = autocount_settings.get_ip_address()
-	BASE_URL = "http://host.docker.internal:8888"
+	# BASE_URL = "http://host.docker.internal:8888"
+	SOCKET_ADDRESS = url_config.get_socket_address()
+
 	results_list = []
 	for delivery_order in frappe.get_all("Delivery Order", filters={"debtor_code":debtor_code}):
-		results = json.loads(requests.get(f"{BASE_URL}/DeliveryOrder/getDetail/{delivery_order.name}").text)
+		results = json.loads(requests.get(f"{SOCKET_ADDRESS}/DeliveryOrder/getDetail/{delivery_order.name}").text)
 		if results:
 			for result in results:
 				result["DeliveryOrderNo"] = delivery_order.name

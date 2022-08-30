@@ -14,7 +14,8 @@ import os
 import requests
 import json
 
-from autocount.autocount.doctype.autocount_settings import autocount_settings
+# from autocount.autocount.doctype.autocount_settings import autocount_settings
+from autocount.autocount.doctype import url_config
 
 from autocount.autocount.doctype.stock_item import stock_item_list
 from autocount.autocount.doctype.stock_group import stock_group_list
@@ -42,7 +43,10 @@ old_transaction_id = ""
 def has_new_transaction():
 	global old_transaction_id
 	# URL = f"{autocount_settings.get_ip_address()}/getTId"
-	URL = f"http://host.docker.internal:8888/getTId"
+	# URL = f"http://host.docker.internal:8888/getTId"
+	SOCKET_ADDRESS = url_config.get_socket_address()
+	URL = f"{SOCKET_ADDRESS}/getTId"
+
 	print(URL)
 	result = json.loads(requests.get(URL).text)
 	new_transaction_id = result[0]["Transaction ID"]
