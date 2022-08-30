@@ -12,15 +12,17 @@ import json
 class AutocountSettings(Document):
 	pass
 
-# LOCALHOST_IP_ADDRESS = "host.docker.internal"
-# DEFAULT_PORT = "8888"	# TODO: Make it editable from ERPNext
+DEFAULT_IP_ADDRESS = "http://host.docker.internal:8888"
 
 @frappe.whitelist()
 def get_ip_address():
-	doc = frappe.get_doc("Autocount Settings")
-	ip_address = doc.ip_address
-	port = doc.port
-	return f"http://{ip_address}:{port}"
+	try:
+		doc = frappe.get_doc("Autocount Settings")
+		ip_address = doc.ip_address
+		port = doc.port
+		return f"http://{ip_address}:{port}"
+	except:
+		return DEFAULT_IP_ADDRESS
 
 @frappe.whitelist()
 def parse_doc(doc):
