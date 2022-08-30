@@ -11,17 +11,25 @@ import json
 import time
 
 from autocount.autocount.doctype.utils import datetime_to_t_format
-from autocount.autocount.doctype.autocount_settings import autocount_settings
+# from autocount.autocount.doctype.autocount_settings import autocount_settings
 
 class ListController:
 	def __init__(self, doctype, url_get_all, url_detail = None):
 		self.doctype = doctype
 		# self.url_get_all = url_get_all
 		# self.url_detail = url_detail
-		self.url_get_all = f"{autocount_settings.get_ip_address()}/{url_get_all}"
+
+		# self.url_get_all = f"{autocount_settings.get_ip_address()}/{url_get_all}"
+		# self.url_detail = url_detail
+		# if url_detail is not None:
+		# 	self.url_detail = f"{autocount_settings.get_ip_address()}/{url_detail}"
+
+		URL = "http://host.docker.internal:8888"
+		self.url_get_all = f"{URL}/{url_get_all}"
 		self.url_detail = url_detail
 		if url_detail is not None:
-			self.url_detail = f"{autocount_settings.get_ip_address()}/{url_detail}"
+			self.url_detail = f"{URL}/{url_detail}"
+
 		self.has_child_table = self.has_child_table()
 
 	def has_child_table(self):
