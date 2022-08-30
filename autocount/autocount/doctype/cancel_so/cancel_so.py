@@ -12,7 +12,7 @@ import json
 from autocount.autocount.doctype.form_controller import FormController
 from autocount.autocount.doctype.utils import convert_date_string
 
-from autocount.autocount.doctype.autocount_settings import autocount_settings
+# from autocount.autocount.doctype.autocount_settings import autocount_settings
 
 DOCTYPE = "Cancel SO"
 DOCTYPE_URL_NAME = "CancelSO"
