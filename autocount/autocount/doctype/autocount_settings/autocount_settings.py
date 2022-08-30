@@ -12,17 +12,18 @@ import json
 class AutocountSettings(Document):
 	pass
 
-DEFAULT_IP_ADDRESS = "http://host.docker.internal:8888"
+DEFAULT_URL = "http://host.docker.internal:8888"
 
 @frappe.whitelist()
 def get_ip_address():
 	try:
-		doc = frappe.get_doc("Autocount Settings")
+		# doc = frappe.get_doc("Autocount Settings")
+		doc = frappe.get_single("Autocount Settings")
 		ip_address = doc.ip_address
 		port = doc.port
 		return f"http://{ip_address}:{port}"
 	except:
-		return DEFAULT_IP_ADDRESS
+		return DEFAULT_URL
 
 @frappe.whitelist()
 def parse_doc(doc):
