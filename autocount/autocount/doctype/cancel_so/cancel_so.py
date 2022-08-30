@@ -26,7 +26,8 @@ class CancelSO(Document):
 
 @frappe.whitelist()
 def get_items_by_debtor_autocount(debtor_code):
-	BASE_URL = autocount_settings.get_ip_address()
+	# BASE_URL = autocount_settings.get_ip_address()
+	BASE_URL = "http://host.docker.internal:8888"
 	results_list = []
 	for sales_order in frappe.get_all("Autocount Sales Order", filters={"debtor_code":debtor_code}):
 		results = json.loads(requests.get(f"{BASE_URL}/SalesOrder/getDetail/{sales_order.name}").text)
