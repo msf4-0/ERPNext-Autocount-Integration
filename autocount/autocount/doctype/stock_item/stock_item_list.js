@@ -38,7 +38,8 @@ frappe.listview_settings[doctype] = {
 	refresh: function (listview) {
 		updateInProgress = true;
 		frappe.call({
-            method:"autocount.autocount.doctype.update.update_all_tables",
+            // method:"autocount.autocount.doctype.update.update_all_tables",
+            method:"autocount.autocount.doctype.stock_item.stock_item_list.test",
             callback:function(r){
                 localStorage.clear();
                 sessionStorage.clear();

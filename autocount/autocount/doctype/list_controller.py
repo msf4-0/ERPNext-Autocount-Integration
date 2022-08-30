@@ -12,6 +12,7 @@ import time
 
 from autocount.autocount.doctype.utils import datetime_to_t_format
 # from autocount.autocount.doctype.autocount_settings import autocount_settings
+from autocount.autocount.doctype import url_config
 
 class ListController:
 	def __init__(self, doctype, url_get_all, url_detail = None):
@@ -24,7 +25,9 @@ class ListController:
 		# if url_detail is not None:
 		# 	self.url_detail = f"{autocount_settings.get_ip_address()}/{url_detail}"
 
-		URL = "http://host.docker.internal:8888"
+		# URL = "http://host.docker.internal:8888"
+		URL = url_config.get_ip_address()
+
 		self.url_get_all = f"{URL}/{url_get_all}"
 		self.url_detail = url_detail
 		if url_detail is not None:
