@@ -24,5 +24,23 @@ def get_socket_address():
 	# 	return f"http://{ip_address}:{port}"
 	# except:
 	# 	return f"http://{DEFAULT_IP_ADDRESS}:{DEFAULT_PORT}"
+
+	# return f"http://{DEFAULT_IP_ADDRESS}:{DEFAULT_PORT}"
+
+	data = frappe.db.get("Autocount Settings")
+
+	if not data:
+		return f"http://{DEFAULT_IP_ADDRESS}:{DEFAULT_PORT}"
+
+	ip_address = data.get(ip_address)
+	port = data.get("port")
+	if not ip_address:
+		frappe.db.set("Autocount Settings", "Autocount Settings", "ip_address", DEFAULT_IP_ADDRESS)
+		frappe.db.commit()
+	if not port:
+		frappe.db.set("Autocount Settings", "Autocount Settings", "port", DEFAULT_PORT)
+		frappe.db.commit()
+	return f"http://{ip_address}:{port}"
+
+
 	
-	return f"http://{DEFAULT_IP_ADDRESS}:{DEFAULT_PORT}"
