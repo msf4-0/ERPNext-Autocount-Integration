@@ -120,19 +120,8 @@ def get_data():
                 },
             ]
 
-        },
-        {
-            "label": _("Settings"),
-            "items": [
-                {
-                    "type": "doctype",
-                    "name": "Autocount Settings",
-                    "label": "Autocount Settings",
-                    "onboard": 1,
-                },
-            ]
-
         }
+        
 
     ]
     return config

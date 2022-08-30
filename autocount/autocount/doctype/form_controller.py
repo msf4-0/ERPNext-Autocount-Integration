@@ -8,10 +8,11 @@ import frappe
 import requests
 import time
 
-from autocount.autocount.doctype.autocount_settings import autocount_settings
+# from autocount.autocount.doctype.autocount_settings import autocount_settings
 
 class FormController:
-	BASE_URL = autocount_settings.get_ip_address()
+	#BASE_URL = autocount_settings.get_ip_address()
+	BASE_URL = "http://host.docker.internal:8888"
 
 	def __init__(self, doctype_url_name):
 		self.doctype_url_name = doctype_url_name

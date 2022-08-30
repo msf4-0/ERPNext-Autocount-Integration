@@ -41,7 +41,8 @@ old_transaction_id = ""
 
 def has_new_transaction():
 	global old_transaction_id
-	URL = f"{autocount_settings.get_ip_address()}/getTId"
+	# URL = f"{autocount_settings.get_ip_address()}/getTId"
+	URL = f"http://host.docker.internal:8888/getTId"
 	print(URL)
 	result = json.loads(requests.get(URL).text)
 	new_transaction_id = result[0]["Transaction ID"]
