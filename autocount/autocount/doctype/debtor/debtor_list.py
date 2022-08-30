@@ -10,13 +10,13 @@ import requests
 import json
 import time
 from autocount.autocount.doctype.list_controller import ListController
-from autocount.autocount.doctype.autocount_settings import autocount_settings
+# from autocount.autocount.doctype.autocount_settings import autocount_settings
 
 DOCTYPE = "Debtor"
 DOCTYPE_URL_NAME = "Debtor"
 ERP_PRIMARY_KEY = "debtor_code"
 AUTOCOUNT_PRIMARY_KEY = "DebtorCode"
-URL_GET_ALL = f"{autocount_settings.get_ip_address()}/{DOCTYPE_URL_NAME}/getAll"
+URL_GET_ALL = f"{DOCTYPE_URL_NAME}/getAll"
 
 
 def transform_statement_type(api_json_value):

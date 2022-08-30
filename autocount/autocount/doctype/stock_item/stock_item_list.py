@@ -10,10 +10,14 @@ import requests
 import json
 import time
 from autocount.autocount.doctype.list_controller import ListController
-from autocount.autocount.doctype.autocount_settings import autocount_settings
+# from autocount.autocount.doctype.autocount_settings import autocount_settings
 
 DOCTYPE = "Stock Item"
-URL_GET_ALL = f"{autocount_settings.get_ip_address()}/StockItem/getAll"
+DOCTYPE_URL_NAME = "StockItem"
+ERP_PRIMARY_KEY = "item_code"
+AUTOCOUNT_PRIMARY_KEY = "ItemCode"
+# URL_GET_ALL = f"{autocount_settings.get_ip_address()}/StockItem/getAll"
+URL_GET_ALL = f"{DOCTYPE_URL_NAME}/getAll"
 
 def add_costing_method_suffix(code):
 	desc_dict = { "0": "Fixed Cost", "1": "Weighted Average", "2": "FIFO", "3":"LIFO" }
@@ -42,5 +46,7 @@ def create_data_map(data):
 
 @frappe.whitelist()
 def update():
+	# controller = ListController(DOCTYPE, URL_GET_ALL)
+	# return controller.update_frappe("item_code", "ItemCode", create_data_map)
 	controller = ListController(DOCTYPE, URL_GET_ALL)
-	return controller.update_frappe("item_code", "ItemCode", create_data_map)
+	return controller.update_frappe(ERP_PRIMARY_KEY, AUTOCOUNT_PRIMARY_KEY, create_data_map)

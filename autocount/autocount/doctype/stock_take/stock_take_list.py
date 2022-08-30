@@ -14,10 +14,11 @@ from autocount.autocount.doctype.stock_item import stock_item_list
 from autocount.autocount.doctype.autocount_settings import autocount_settings
 
 DOCTYPE = "Stock Take"
+DOCTYPE_URL_NAME = "StockTake"
 ERP_PRIMARY_KEY = "doc_no"
 AUTOCOUNT_PRIMARY_KEY = "DocNo"
-URL_GET_ALL = f"{autocount_settings.get_ip_address()}/StockTake/getAll"
-URL_DETAIL = f"{autocount_settings.get_ip_address()}/StockTake/getDetail"
+URL_GET_ALL = f"{DOCTYPE_URL_NAME}/getAll"
+URL_DETAIL = f"{DOCTYPE_URL_NAME}/getDetail"
 
 def create_data_map(data):
 	child_items = data["ChildItems"]

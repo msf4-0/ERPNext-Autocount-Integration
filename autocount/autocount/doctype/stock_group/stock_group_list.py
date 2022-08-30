@@ -10,13 +10,14 @@ import requests
 import json
 import time
 from autocount.autocount.doctype.list_controller import ListController
-from autocount.autocount.doctype.autocount_settings import autocount_settings
+# from autocount.autocount.doctype.autocount_settings import autocount_settings
 
 DOCTYPE = "Stock Group"
+DOCTYPE_URL_NAME = "StockGroup"
 ERP_PRIMARY_KEY = "item_group"
 AUTOCOUNT_PRIMARY_KEY = "ItemGroup"
-URL_GET_ALL = f"{autocount_settings.get_ip_address()}/{DOCTYPE.replace(' ', '')}/getAll"
-URL_DETAIL = f"{autocount_settings.get_ip_address()}/{DOCTYPE.replace(' ', '')}/getDetail"
+URL_GET_ALL = f"{DOCTYPE_URL_NAME}/getAll"
+URL_DETAIL = f"{DOCTYPE_URL_NAME}/getDetail"
 
 def get_suffix(code):
 	codes_dict = {

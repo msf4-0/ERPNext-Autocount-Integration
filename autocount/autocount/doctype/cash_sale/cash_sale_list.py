@@ -10,14 +10,14 @@ import requests
 import json
 import time
 from autocount.autocount.doctype.list_controller import ListController
-from autocount.autocount.doctype.autocount_settings import autocount_settings
+# from autocount.autocount.doctype.autocount_settings import autocount_settings
 
 DOCTYPE = "Cash Sale"
 DOCTYPE_URL_NAME = "CashSale"
 ERP_PRIMARY_KEY = "doc_no"
 AUTOCOUNT_PRIMARY_KEY = "DocNo"
-URL_GET_ALL = f"{autocount_settings.get_ip_address()}/{DOCTYPE_URL_NAME}/getAll"
-URL_DETAIL = f"{autocount_settings.get_ip_address()}/{DOCTYPE_URL_NAME}/getDetail"
+URL_GET_ALL = f"{DOCTYPE_URL_NAME}/getAll"
+URL_DETAIL = f"{DOCTYPE_URL_NAME}/getDetail"
 
 def transform_payment_mode(api_json_value):
 	maps = {
