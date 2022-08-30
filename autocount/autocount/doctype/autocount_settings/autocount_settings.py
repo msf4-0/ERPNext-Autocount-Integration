@@ -18,8 +18,6 @@ DEFAULT_IP_ADDRESS = "http://host.docker.internal:8888"
 def get_ip_address():
 	try:
 		doc = frappe.get_doc("Autocount Settings")
-		if not doc:
-			return DEFAULT_IP_ADDRESS
 		ip_address = doc.ip_address
 		port = doc.port
 		return f"http://{ip_address}:{port}"
