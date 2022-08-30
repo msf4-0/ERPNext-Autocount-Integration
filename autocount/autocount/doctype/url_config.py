@@ -11,13 +11,16 @@ DEFAULT_PORT = "8888"
 
 @frappe.whitelist()
 def get_socket_address():
-	doc = frappe.get_single("Autocount Settings")
-	ip_address = doc.ip_address
-	port = doc.port
-	if not ip_address:
-		doc.set("ip_address", DEFAULT_IP_ADDRESS)
-		doc.save()
-	if not port:
-		doc.set("port", DEFAULT_URL)
-		doc.save()
-	return f"http://{ip_address}:{port}"
+	try:
+		doc = frappe.get_single("Autocount Settings")
+		ip_address = doc.ip_address
+		port = doc.port
+		if not ip_address:
+			doc.set("ip_address", DEFAULT_IP_ADDRESS)
+			doc.save()
+		if not port:
+			doc.set("port", DEFAULT_URL)
+			doc.save()
+		return f"http://{ip_address}:{port}"
+	except:
+		return f"http://{DEFAULT_IP_ADDRESS}:{DEFAULT_PORT}"
