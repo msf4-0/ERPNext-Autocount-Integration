@@ -16,7 +16,6 @@ DOCTYPE = "Stock Item"
 DOCTYPE_URL_NAME = "StockItem"
 ERP_PRIMARY_KEY = "item_code"
 AUTOCOUNT_PRIMARY_KEY = "ItemCode"
-# URL_GET_ALL = f"{autocount_settings.get_ip_address()}/StockItem/getAll"
 URL_GET_ALL = f"{DOCTYPE_URL_NAME}/getAll"
 
 def add_costing_method_suffix(code):

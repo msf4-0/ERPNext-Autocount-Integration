@@ -37,24 +37,6 @@ from autocount.autocount.doctype.debit_note import debit_note_list
 from autocount.autocount.doctype.cancel_so import cancel_so_list
 from autocount.autocount.doctype.delivery_return import delivery_return_list
 
-DEBUG = False
-old_transaction_id = ""
-
-def has_new_transaction():
-	global old_transaction_id
-	# URL = f"{autocount_settings.get_ip_address()}/getTId"
-	# URL = f"http://host.docker.internal:8888/getTId"
-	SOCKET_ADDRESS = url_config.get_socket_address()
-	URL = f"{SOCKET_ADDRESS}/getTId"
-
-	print(URL)
-	result = json.loads(requests.get(URL).text)
-	new_transaction_id = result[0]["Transaction ID"]
-	if old_transaction_id != new_transaction_id:
-		old_transaction_id = new_transaction_id
-		return True
-	return False
-
 def filter_msg(results):
 	# Only showing msg when there are changes (deleted, added, edited)
 	# Calculate total time
@@ -72,27 +54,24 @@ def filter_msg(results):
 
 @frappe.whitelist()
 def update_all_tables():
-	if has_new_transaction() or DEBUG:
-		a = stock_item_list.update()
-		b = stock_group_list.update()
-		c = stock_take_list.update()
-		d = stock_adjustment_list.update()
-		e = stock_issue_list.update()
-		f = stock_receive_list.update()
-		g = stock_write_off_list.update()
-		h = stock_renew_cost_list.update()
+	a = stock_item_list.update()
+	b = stock_group_list.update()
+	c = stock_take_list.update()
+	d = stock_adjustment_list.update()
+	e = stock_issue_list.update()
+	f = stock_receive_list.update()
+	g = stock_write_off_list.update()
+	h = stock_renew_cost_list.update()
 
-		i = debtor_list.update()
-		j = autocount_sales_order_list.update()
-		k = autocount_quotation_list.update()
-		l = delivery_order_list.update()
-		m = autocount_sales_invoice_list.update()
-		n = cash_sale_list.update()
-		o = credit_note_list.update()
-		p = debit_note_list.update()
-		q = cancel_so_list.update()
-		r = delivery_return_list.update()
+	i = debtor_list.update()
+	j = autocount_sales_order_list.update()
+	k = autocount_quotation_list.update()
+	l = delivery_order_list.update()
+	m = autocount_sales_invoice_list.update()
+	n = cash_sale_list.update()
+	o = credit_note_list.update()
+	p = debit_note_list.update()
+	q = cancel_so_list.update()
+	r = delivery_return_list.update()
 
-		return filter_msg([a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r])
-
-	return "No new transaction. Skipped update."
+	return filter_msg([a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r])

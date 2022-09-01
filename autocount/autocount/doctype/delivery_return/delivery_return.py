@@ -27,8 +27,6 @@ class DeliveryReturn(Document):
 
 @frappe.whitelist()
 def get_items_by_debtor_autocount(debtor_code):
-	# BASE_URL = autocount_settings.get_ip_address()
-	# BASE_URL = "http://host.docker.internal:8888"
 	SOCKET_ADDRESS = url_config.get_socket_address()
 
 	results_list = []

@@ -12,10 +12,6 @@ import time
 from autocount.autocount.doctype import url_config
 
 class FormController:
-	# BASE_URL = autocount_settings.get_ip_address()
-	# BASE_URL = "http://host.docker.internal:8888"
-	# SOCKET_ADDRESS = url_config.get_socket_address()
-
 	def __init__(self, doctype_url_name):
 		self.socker_address = url_config.get_socket_address()
 		self.doctype_url_name = doctype_url_name
