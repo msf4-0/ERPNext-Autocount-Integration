@@ -26,7 +26,7 @@ def test_connection(doc):
 	url = f"{ip_address}/StockItem/getAll"
 	print(url)
 	try:
-		res = requests.get(url)
+		res = requests.get(url, timeout = 10)
 		if res.status_code == 200:
 			return "Connection success"
 		return f"HTTP Error: {res.status_code}"

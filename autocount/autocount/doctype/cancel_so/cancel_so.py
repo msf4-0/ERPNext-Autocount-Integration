@@ -33,7 +33,7 @@ def get_items_by_debtor_autocount(debtor_code):
 	
 	results_list = []
 	for sales_order in frappe.get_all("Autocount Sales Order", filters={"debtor_code":debtor_code}):
-		results = json.loads(requests.get(f"{SOCKET_ADDRESS}/SalesOrder/getDetail/{sales_order.name}").text)
+		results = json.loads(requests.get(f"{SOCKET_ADDRESS}/SalesOrder/getDetail/{sales_order.name}", timeout = 10).text)
 		if results:
 			for result in results:
 				result["SalesOrderNo"] = sales_order.name
