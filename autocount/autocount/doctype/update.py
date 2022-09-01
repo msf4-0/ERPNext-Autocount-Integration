@@ -54,8 +54,8 @@ def filter_msg(results):
 
 @frappe.whitelist()
 def update_all_tables():
-	a = stock_item_list.update()
-	b = stock_group_list.update()
+	a = stock_group_list.update()
+	b = stock_item_list.update()
 	c = stock_take_list.update()
 	d = stock_adjustment_list.update()
 	e = stock_issue_list.update()
