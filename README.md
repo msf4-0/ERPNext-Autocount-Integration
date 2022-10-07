@@ -19,6 +19,11 @@ Autocount ERPNext custom app is built based on [Autocount Accounting 2.0](https:
 
 - Installation guide refers to: https://github.com/msf4-0/IRPS-Autocount-Integration
 
+## Setup
+By default, the IP address is set to docker localhost with port of 8888 (http://host.docker.internal:8888). If the app is not running on main computer which installs Autocount software, users must configure the settings before using.
+
+1. 
+
 
 ## Important Note
 Autocount ERPNext custom app may not validate data when being exported to Autocount software. The user must have basic knowledge of Autocount to avoid any error. 
@@ -27,4 +32,4 @@ Autocount ERPNext custom app may not validate data when being exported to Autoco
 1. [Timothy Wong](https://github.com/Tim1702)
 
 ## License
-This software is licensed under the [GNU GPLv3 LICENSE](/LICENSE) © [Selangor Human Resource Development Centre](http://www.shrdc.org.my/). 2021.  All Rights Reserved.
+This software is licensed under the [GNU GPLv3 LICENSE](/LICENSE) © [Selangor Human Resource Development Centre](http://www.shrdc.org.my/). 2022.  All Rights Reserved.
