@@ -44,6 +44,8 @@ By default, the IP address is set to docker localhost with port of `8888` (http:
 
 3. Press `Test Connection` button to test if the connection is working. Remember to press `Save` to save changes.
 
+4. Restart Docker image by running `docker-compose -p project1 restart` if any issue occurred. 
+
 
 ## Compatibility
 Autocount Accounting 2.0 software and MyAutocount API server service only support Windows. However, ERPNext supports all major platforms (Windows, MacOS and Linux) which are compatible with Docker. 
