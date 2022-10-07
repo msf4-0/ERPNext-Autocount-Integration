@@ -28,7 +28,7 @@ Autocount ERPNext custom app is built based on [Autocount Accounting 2.0](https:
 - Installation guide refers to: https://github.com/msf4-0/IRPS-Autocount-Integration
 
 ## Setup
-By default, the IP address is set to docker localhost with port of 8888 (http://host.docker.internal:8888). If the app is not running on main computer which installs Autocount software, users must configure the settings before using.
+By default, the IP address is set to docker localhost with port of `8888` (http://host.docker.internal:8888). If the app is not running on main computer which installs Autocount software, users must configure the settings before using.
 
 1. Go to Autocount Settings.
 
